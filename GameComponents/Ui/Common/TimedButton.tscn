@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dokoy5yqck5of"]
+
+[ext_resource type="Script" uid="uid://bfh1w32cvkpw" path="res://Common/timed_button.gd" id="1_g1d8u"]
+
+[node name="PanelContainer" type="PanelContainer" unique_id=1910716580]
+clip_contents = true
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+script = ExtResource("1_g1d8u")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1828666358]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="Container" type="PanelContainer" parent="MarginContainer" unique_id=671303834]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Container" unique_id=1544664932]
+layout_mode = 2
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=740250195]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "sadhzoasduuasd"
+
+[node name="Timer" type="Timer" parent="." unique_id=3785739]
+wait_time = 4.0
+one_shot = true
+autostart = true
+ignore_time_scale = true

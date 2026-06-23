@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cevpmn3h738gx"]
+
+[ext_resource type="Script" uid="uid://ys4d5y5shlme" path="res://Assets/Common/Debug/DebugShapes/gizmo.gd" id="1_b1nq2"]
+
+[node name="Gizmo" type="MeshInstance3D" unique_id=1909088936]
+script = ExtResource("1_b1nq2")

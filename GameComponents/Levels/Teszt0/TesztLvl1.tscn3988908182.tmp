@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://yu3drlitxlbx"]
+
+[ext_resource type="Material" uid="uid://bcdih7v3whoey" path="res://Assets/Common/DebugTextures/DebugMaterial.tres" id="1_ic3ba"]
+[ext_resource type="Script" uid="uid://bsq5jj0nj70xw" path="res://GameComponents/Player/player_camera.gd" id="2_56q7f"]
+[ext_resource type="PackedScene" uid="uid://c054b5kcd2fg5" path="res://GameComponents/Player/Player.tscn" id="2_fbw8t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_56q7f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fbw8t"]
+
+[node name="TesztLvL1" type="Node3D" unique_id=1361383651]
+
+[node name="CharacterBody3D" parent="." unique_id=1482982240 node_paths=PackedStringArray("camera") instance=ExtResource("2_fbw8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13378513, 1.6167985, -0.026512146)
+camera = NodePath("PlayerCamera")
+walk_speed = 10.0
+run_speed = 10.0
+accel_time = 0.5
+
+[node name="PlayerCamera" type="Node3D" parent="CharacterBody3D" unique_id=827845989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6096109, 0)
+script = ExtResource("2_56q7f")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/PlayerCamera" unique_id=348382820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.6792048)
+doppler_tracking = 2
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D/PlayerCamera" unique_id=161404969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.6792048)
+shape = SubResource("SphereShape3D_56q7f")
+spring_length = 3.0
+
+[node name="Graphics" type="Node" parent="." unique_id=1536998511]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Graphics" unique_id=786389155]
+transform = Transform3D(0.7584363, -0.5758842, 0.3051749, -0.6008167, -0.43632665, 0.6698047, -0.252574, -0.69135845, -0.67692685, 0, 5.16435, 0)
+shadow_enabled = true
+
+[node name="Lvl" type="Node" parent="." unique_id=790922905]
+
+[node name="Ground" type="CSGMesh3D" parent="Lvl" unique_id=359228039]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.5, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_fbw8t")
+material = ExtResource("1_ic3ba")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Lvl" unique_id=860332463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -2.5)
+material_override = ExtResource("1_ic3ba")
+use_collision = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Lvl" unique_id=33345101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, -7.5)
+material_override = ExtResource("1_ic3ba")
+use_collision = true
+size = Vector3(7, 5, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Lvl" unique_id=1783576783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -2.5)
+material_override = ExtResource("1_ic3ba")
+use_collision = true
+size = Vector3(1, 0.5, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Lvl" unique_id=1594347370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, -2.5)
+material_override = ExtResource("1_ic3ba")
+use_collision = true
+size = Vector3(1, 2, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Lvl" unique_id=2064850179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.75, -2.5)
+material_override = ExtResource("1_ic3ba")
+use_collision = true
+size = Vector3(1, 1.5, 1)

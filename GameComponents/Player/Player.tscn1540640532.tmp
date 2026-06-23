@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c054b5kcd2fg5"]
+
+[ext_resource type="Script" uid="uid://cj255fstbenrc" path="res://GameComponents/Player/player_movement.gd" id="1_s0eop"]
+[ext_resource type="Script" uid="uid://c4isiikh60ie7" path="res://Assets/Common/Scripts/StateMachine.gd" id="2_ay0ux"]
+[ext_resource type="Script" uid="uid://cljqhy0kw1x8y" path="res://GameComponents/Player/States/player_idle.gd" id="3_qsynl"]
+[ext_resource type="Script" uid="uid://dkdv4eysygsgf" path="res://GameComponents/Player/States/player_walk.gd" id="4_vqgsx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cmbaw"]
+radius = 0.305
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s0eop"]
+radius = 0.27392578
+height = 1.4262695
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1482982240]
+script = ExtResource("1_s0eop")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=539221458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89648724, 0)
+mesh = SubResource("CapsuleMesh_cmbaw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=762501337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7332796, 0)
+shape = SubResource("CapsuleShape3D_s0eop")
+
+[node name="StateMachine" type="Node" parent="." unique_id=78028734]
+script = ExtResource("2_ay0ux")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1590931241]
+script = ExtResource("3_qsynl")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1445447404]
+script = ExtResource("4_vqgsx")
+
+[node name="Run" type="Node" parent="StateMachine" unique_id=1559228994]

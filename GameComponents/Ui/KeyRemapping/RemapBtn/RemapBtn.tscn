@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dl1tawuhpgfa"]
+
+[ext_resource type="Script" uid="uid://bkocbu4tcyecc" path="res://KeyRemapping/RemapBtn/ui_remap_btn.gd" id="1_1145o"]
+
+[node name="ActionSetterContainer" type="HBoxContainer" unique_id=1543988257]
+size_flags_horizontal = 3
+script = ExtResource("1_1145o")
+
+[node name="ActionName" type="Label" parent="." unique_id=1332826618]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "action"
+
+[node name="Btns" type="HBoxContainer" parent="." unique_id=1997155540]
+layout_mode = 2
+
+[node name="PrimaryBtn" type="Button" parent="Btns" unique_id=561515404]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Primary"
+
+[node name="SecondaryBtn" type="Button" parent="Btns" unique_id=1636723177]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Secondary
+"

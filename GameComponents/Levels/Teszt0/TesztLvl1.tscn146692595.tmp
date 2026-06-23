@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://yu3drlitxlbx"]
+
+[ext_resource type="Script" uid="uid://bsoa8epgrhxto" path="res://GameComponents/Levels/Teszt0/teszt_lvl_1.gd" id="1_d42iv"]
+[ext_resource type="Material" uid="uid://bcdih7v3whoey" path="res://Assets/Common/Debug/DebugTextures/DebugMaterial.tres" id="1_ic3ba"]
+[ext_resource type="PackedScene" uid="uid://c054b5kcd2fg5" path="res://GameComponents/Player/Player.tscn" id="2_fbw8t"]
+[ext_resource type="PackedScene" uid="uid://cevpmn3h738gx" path="res://Assets/Common/Debug/DebugShapes/gizmo.tscn" id="4_o02rg"]
+[ext_resource type="PackedScene" uid="uid://beyfqnd6xocq7" path="res://GameComponents/Cameras/player_camera.tscn" id="4_qya2f"]
+[ext_resource type="Material" uid="uid://cq5oq4jiby5ck" path="res://Assets/Common/Debug/DebugTextures/DebugMaterialOrange.tres" id="6_qya2f"]
+[ext_resource type="Script" uid="uid://bkj5akgqveqn7" path="res://GameComponents/Levels/Teszt0/ui.gd" id="7_4oqw6"]
+[ext_resource type="PackedScene" uid="uid://bgn2contbmbqs" path="res://GameComponents/Ui/KeyRemapping/ControlKeys.tscn" id="8_4oqw6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fbw8t"]
+
+[node name="TesztLvL1" type="Node3D" unique_id=1361383651]
+script = ExtResource("1_d42iv")
+
+[node name="CharacterBody3D" parent="." unique_id=1482982240 node_paths=PackedStringArray("camera") instance=ExtResource("2_fbw8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13378513, 1.6167985, -0.026512146)
+camera = NodePath("PlayerCamera")
+
+[node name="Gizmo" parent="CharacterBody3D" unique_id=1909088936 node_paths=PackedStringArray("player") instance=ExtResource("4_o02rg")]
+visible = false
+player = NodePath("..")
+
+[node name="PlayerCamera" parent="CharacterBody3D" unique_id=459672921 instance=ExtResource("4_qya2f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61, 0)
+
+[node name="Graphics" type="Node" parent="." unique_id=1536998511]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Graphics" unique_id=786389155]
+transform = Transform3D(0.7584363, -0.5758842, 0.3051749, -0.6008167, -0.43632665, 0.6698047, -0.252574, -0.69135845, -0.67692685, 0, 5.16435, 0)
+shadow_enabled = true
+
+[node name="Lvl" type="Node" parent="." unique_id=790922905]
+
+[node name="Ground" type="CSGMesh3D" parent="Lvl" unique_id=359228039]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.5, 0)
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+mesh = SubResource("BoxMesh_fbw8t")
+material = ExtResource("1_ic3ba")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Lvl" unique_id=860332463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -2.5)
+material_override = ExtResource("1_ic3ba")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Lvl" unique_id=14590087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.5, 6.5)
+material_override = ExtResource("6_qya2f")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(3, 1, 3)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Lvl" unique_id=1002302894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 0.5, -11)
+material_override = ExtResource("6_qya2f")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(3, 1, 8)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Lvl" unique_id=1170405251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 1, -6)
+material_override = ExtResource("6_qya2f")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(3, 2, 8)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Lvl" unique_id=1662526332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 1.5, 2)
+material_override = ExtResource("6_qya2f")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(3, 3, 8)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Lvl" unique_id=864481635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 1, 11.5)
+material_override = ExtResource("6_qya2f")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(3, 2, 3)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Lvl" unique_id=1454670207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 13.5)
+material_override = ExtResource("6_qya2f")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(3, 4, 3)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Lvl" unique_id=1139716086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 2, 20.5)
+material_override = ExtResource("6_qya2f")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(3, 4, 3)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Lvl" unique_id=1102462219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.001532, 1.5, 12.107939)
+material_override = ExtResource("6_qya2f")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(4, 3, 3)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Lvl" unique_id=1326593905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.832682, 1.7276001, 9.316293)
+material_override = ExtResource("6_qya2f")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(3, 3.4552002, 4)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Lvl" unique_id=33345101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, -7.5)
+material_override = ExtResource("1_ic3ba")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(7, 5, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Lvl" unique_id=1783576783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -2.5)
+material_override = ExtResource("1_ic3ba")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(1, 0.5, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Lvl" unique_id=1594347370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, -2.5)
+material_override = ExtResource("1_ic3ba")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(1, 2, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Lvl" unique_id=2064850179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.75, -2.5)
+material_override = ExtResource("1_ic3ba")
+use_collision = true
+collision_layer = 3
+collision_mask = 0
+size = Vector3(1, 1.5, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Lvl" unique_id=876918639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=791498194]
+
+[node name="DebugMenu" type="Control" parent="CanvasLayer" unique_id=361932455]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/DebugMenu" unique_id=455210525]
+layout_mode = 0
+offset_right = 186.0
+offset_bottom = 16.0
+min_value = 0.1
+max_value = 1.0
+step = 0.1
+value = 0.1
+
+[node name="Ui" type="Control" parent="CanvasLayer" unique_id=1231175636]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_4oqw6")
+
+[node name="PanelContainer" parent="CanvasLayer/Ui" unique_id=661238864 instance=ExtResource("8_4oqw6")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.020833334
+anchor_top = 0.061728396
+anchor_right = 0.9791667
+anchor_bottom = 0.90123457
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer/Ui" unique_id=642031033]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.437
+anchor_top = 1.0
+anchor_right = 0.55600005
+anchor_bottom = 1.0
+offset_left = 0.57598877
+offset_top = -40.0
+offset_right = -0.51208496
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="paused" from="." to="CanvasLayer/Ui" method="_on_teszt_lv_l_1_paused"]
+[connection signal="value_changed" from="CanvasLayer/DebugMenu/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Ui/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Ui/Button" to="CanvasLayer/Ui" method="_on_button_pressed"]

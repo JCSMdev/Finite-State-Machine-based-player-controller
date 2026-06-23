@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://c054b5kcd2fg5"]
+
+[ext_resource type="Script" uid="uid://cj255fstbenrc" path="res://GameComponents/Player/player.gd" id="1_s0eop"]
+[ext_resource type="Script" uid="uid://536h2tn5vukt" path="res://GameComponents/Player/States/player_state_machine.gd" id="2_726ux"]
+[ext_resource type="Script" uid="uid://cljqhy0kw1x8y" path="res://GameComponents/Player/States/Ground/player_idle.gd" id="3_qsynl"]
+[ext_resource type="Script" uid="uid://dkdv4eysygsgf" path="res://GameComponents/Player/States/Ground/player_walk.gd" id="4_vqgsx"]
+[ext_resource type="Script" uid="uid://c0l8wjwpxris8" path="res://GameComponents/Player/States/Ground/player_run.gd" id="5_qt1uu"]
+[ext_resource type="Script" uid="uid://b8j0l1qlwssmq" path="res://GameComponents/Player/States/AirBorn/player_jump.gd" id="6_25dpl"]
+[ext_resource type="Script" uid="uid://cc613fdldclap" path="res://GameComponents/Player/States/AirBorn/player_falling.gd" id="7_xuky2"]
+[ext_resource type="Script" uid="uid://v0ax53er0511" path="res://GameComponents/Player/States/player_climbing.gd" id="8_726ux"]
+[ext_resource type="Script" uid="uid://drdu3rcaob7mk" path="res://GameComponents/Player/ledge_detector.gd" id="8_xiglw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s0eop"]
+radius = 0.27392578
+height = 1.75
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cmbaw"]
+radius = 0.305
+height = 1.8
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1482982240]
+script = ExtResource("1_s0eop")
+
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=762501337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
+shape = SubResource("CapsuleShape3D_s0eop")
+
+[node name="StateMachines" type="Node" parent="." unique_id=1633576422]
+
+[node name="Movement" type="Node" parent="StateMachines" unique_id=78028734 node_paths=PackedStringArray("player", "initial_state")]
+script = ExtResource("2_726ux")
+player = NodePath("../..")
+initial_state = NodePath("Ground/Idle")
+
+[node name="Climbing" type="Node" parent="StateMachines/Movement" unique_id=355992742]
+script = ExtResource("8_726ux")
+
+[node name="Airborn" type="Node" parent="StateMachines/Movement" unique_id=544557783]
+
+[node name="Jumping" type="Node" parent="StateMachines/Movement/Airborn" unique_id=235608253]
+script = ExtResource("6_25dpl")
+
+[node name="Falling" type="Node" parent="StateMachines/Movement/Airborn" unique_id=1611724041]
+script = ExtResource("7_xuky2")
+
+[node name="Ground" type="Node" parent="StateMachines/Movement" unique_id=1907969570]
+
+[node name="Idle" type="Node" parent="StateMachines/Movement/Ground" unique_id=1590931241]
+script = ExtResource("3_qsynl")
+
+[node name="Walking" type="Node" parent="StateMachines/Movement/Ground" unique_id=1445447404]
+script = ExtResource("4_vqgsx")
+
+[node name="Running" type="Node" parent="StateMachines/Movement/Ground" unique_id=1559228994]
+script = ExtResource("5_qt1uu")
+
+[node name="Timers" type="Node" parent="." unique_id=751720872]
+
+[node name="JumpTimers" type="Node" parent="Timers" unique_id=1694489471]
+
+[node name="Coyote" type="Timer" parent="Timers/JumpTimers" unique_id=382592813]
+one_shot = true
+
+[node name="Jump_Buffer" type="Timer" parent="Timers/JumpTimers" unique_id=1698127023]
+one_shot = true
+
+[node name="Jump_Cooldown" type="Timer" parent="Timers/JumpTimers" unique_id=813418436]
+one_shot = true
+
+[node name="PlayerSkin" type="Node3D" parent="." unique_id=659349641]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerSkin" unique_id=539221458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_cmbaw")
+
+[node name="LedgeDetector" type="Node3D" parent="." unique_id=49138396]
+script = ExtResource("8_xiglw")
+
+[node name="RayCast3D" type="RayCast3D" parent="LedgeDetector" unique_id=1734746881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.913, 0.438)
+target_position = Vector3(0, -1.7, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="LedgeDetector" unique_id=2104387578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.053135, 0)
+target_position = Vector3(0, 0, 1.425)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=460905879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1868756, 0)
+billboard = 1
+text = "State"

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="UiCommonTexts" format=3 uid="uid://bhb3fseepprxg"]
+
+[ext_resource type="Script" uid="uid://eb4b714t8eqr" path="res://GameComponents/Ui/Ui_Common_texts.gd" id="1_dm1hw"]
+
+[resource]
+script = ExtResource("1_dm1hw")
+metadata/_custom_type_script = "uid://eb4b714t8eqr"

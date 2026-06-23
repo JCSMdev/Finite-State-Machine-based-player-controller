@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerResource" format=3 uid="uid://tvhvtgclhnb8"]
+
+[ext_resource type="Script" uid="uid://duy6johscrrwx" path="res://GameComponents/Player/PlayerResource.gd" id="1_ux5v3"]
+
+[resource]
+script = ExtResource("1_ux5v3")
+walk_speed = 4.0
+run_speed = 8.0
+accel_time = 100.0
+friction = 0.6
+metadata/_custom_type_script = "uid://duy6johscrrwx"
